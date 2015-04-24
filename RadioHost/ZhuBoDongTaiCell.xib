@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -23,8 +24,12 @@
                         <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3小时前" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14i-aw-sE5">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3小时前" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14i-aw-sE5">
                         <rect key="frame" x="272" y="8" width="42" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="42" id="Qdq-t8-sOm"/>
+                            <constraint firstAttribute="height" constant="21" id="rjw-Ji-IAB"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -36,6 +41,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="14i-aw-sE5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="DkS-cj-5fo"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="14i-aw-sE5" secondAttribute="trailing" constant="-2" id="Ea7-p9-BX7"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="Img" destination="FJW-1R-4Lh" id="cGu-Qn-Hes"/>

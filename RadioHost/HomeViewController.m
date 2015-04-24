@@ -16,8 +16,8 @@
 #import "tableView2Cell.h"
 #import "TesCollectionViewCell.h"
 #import "UIImageView+AFNetworking.h"
-//#import "SVProgressHUD.h"
-#import "MBProgressHUD.h"
+#import "SVProgressHUD.h"
+//#import "MBProgressHUD.h"
 #import "ViewController1.h"
 #import "ViewController22.h"
 #import "ZhuboDetailController.h"
@@ -43,6 +43,7 @@
     UIView *bottomView;
     UIScrollView *Rascroll;
     UIScrollView *Muscroll;
+   // MBProgressHUD *HUD;
    // UISegmentedControl *segment;
    // float wid :[DeviceManager currentScreenSize].width;
 }
@@ -69,6 +70,7 @@
    // [self createPoint];
     [self creatNSTimer];
     
+        //[self showWithLabel];
     [self RadiorequestData ];
     //[self PicrequestData];
     [self MusicrequestData:kUrl ];
@@ -81,6 +83,18 @@
 -(void)searchClick{
     
 }
+
+//- (void)showWithLabel {
+//    
+//    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+//    [self.navigationController.view addSubview:HUD];
+//    
+//    HUD.delegate = self;
+//    HUD.labelText = @"Loading";
+//    
+//  //  [HUD showWhileExecuting:@selector(myTask) onTarget:self withObject:nil animated:YES];
+//    [HUD show:YES];
+//}
 //数据请求
 
   //电台的数据
@@ -263,7 +277,8 @@
     //[tableView1 setSeparatorColor:[UIColor redColor]];
     [tableView1 addHeaderWithTarget:self action:@selector(headerfresh)];
     [tableView1 addFooterWithTarget:self action:@selector(footmore)];
-    
+    [SVProgressHUD showInView:self.view status:@"Loading..."];
+
     
     
        //音乐tableView
@@ -307,7 +322,7 @@
     _TesCollectionView.delegate = self;
     _TesCollectionView.backgroundColor = [UIColor whiteColor];
     _TesCollectionView.showsVerticalScrollIndicator = NO;
-   
+    
     
     [_scrollView addSubview:tableView1];
     [_scrollView addSubview:tableView2];
@@ -523,8 +538,10 @@
        cell.smallTitle.text = [NSString stringWithFormat:@"%@",model.smallTitle];
         
      //   [SVProgressHUD dismiss];
-        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+       // [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         }
+        //[HUD hide:YES afterDelay:2];
+        [SVProgressHUD dismiss];
         return cell;
         
     }else{
@@ -594,6 +611,7 @@
         cell.smallTitle.text = [NSString stringWithFormat:@"%@",model.Title];
         
     }
+    //[SVProgressHUD dismiss];
     return cell;
 }
 #pragma flow layout
