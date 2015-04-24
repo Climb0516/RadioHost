@@ -25,7 +25,7 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
-            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.90075245308661267" green="0.92539875500869362" blue="0.94971196338383834" alpha="1" colorSpace="calibratedRGB"/>
             <size key="customSize" width="87" height="131"/>
             <connections>
                 <outlet property="TesImg" destination="Pvb-Os-Neq" id="gDc-IQ-35s"/>

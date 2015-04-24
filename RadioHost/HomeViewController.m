@@ -61,6 +61,8 @@
     PicArray = [[NSMutableArray alloc] init];
     
     [self addTiTle:@"首页"];
+     self.title = @"首页";
+    
     [self addimage:[UIImage imageNamed:@"night_top_navigation_searchbutton@2x"] selector:@selector(searchClick) location:NO];
     
     
@@ -70,7 +72,7 @@
    // [self createPoint];
     [self creatNSTimer];
     
-        //[self showWithLabel];
+    
     [self RadiorequestData ];
     //[self PicrequestData];
     [self MusicrequestData:kUrl ];
@@ -84,17 +86,7 @@
     
 }
 
-//- (void)showWithLabel {
-//    
-//    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-//    [self.navigationController.view addSubview:HUD];
-//    
-//    HUD.delegate = self;
-//    HUD.labelText = @"Loading";
-//    
-//  //  [HUD showWhileExecuting:@selector(myTask) onTarget:self withObject:nil animated:YES];
-//    [HUD show:YES];
-//}
+
 //数据请求
 
   //电台的数据
@@ -267,7 +259,8 @@
 //
     
     
-    tableView1  = [[UITableView alloc]initWithFrame:CGRectMake(0, 186, [DeviceManager currentScreenSize].width, [DeviceManager currentScreenSize].height-64-49-180-40)];
+
+    tableView1  = [[UITableView alloc]initWithFrame:CGRectMake(0, 110, [DeviceManager currentScreenSize].width, [DeviceManager currentScreenSize].height-64-49-100-40)];
     tableView1.delegate = self;
   tableView1.tag=400;
     //    tableView1.bounces = NO;
@@ -277,9 +270,6 @@
     //[tableView1 setSeparatorColor:[UIColor redColor]];
     [tableView1 addHeaderWithTarget:self action:@selector(headerfresh)];
     [tableView1 addFooterWithTarget:self action:@selector(footmore)];
-    [SVProgressHUD showInView:self.view status:@"Loading..."];
-
-    
     
        //音乐tableView
     
@@ -298,7 +288,7 @@
         //imgview.backgroundColor =[UIColor purpleColor];
         [Muscroll addSubview:imgview];
         
-        UILabel *lab =[[UILabel alloc] initWithFrame:CGRectMake(270+i*320, 160, 100, 20)];
+        UILabel *lab =[[UILabel alloc] initWithFrame:CGRectMake(270+i*320, 150, 100, 20)];
         lab.text = [NSString stringWithFormat:@"%ld /  %ld",i+1,Muimg.count];
         lab.textColor = [UIColor greenColor];
         [Muscroll addSubview:lab];
@@ -337,7 +327,7 @@
     [tableView2 registerNib:[UINib nibWithNibName:@"tableView2Cell" bundle:nil] forCellReuseIdentifier:@"cellName"];
     [_TesCollectionView registerNib:[UINib nibWithNibName:@"TesCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"cell"];
     
-   // [SVProgressHUD showInView:naview status:@"玩命 加载中。。。"];
+    [SVProgressHUD showInView:self.view status:@"玩命 加载中。。。"];
    // [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 }
 //-(void)segment:(id)sender{
@@ -366,14 +356,14 @@
 
 -(void)createpic{
     for (NSInteger i=0; i<PicArray.count; i++) {
-        UIImageView *imgview =[[UIImageView alloc] initWithFrame:CGRectMake(2+i*[DeviceManager currentScreenSize].width, 2, [DeviceManager currentScreenSize].width-4, 180)];
+        UIImageView *imgview =[[UIImageView alloc] initWithFrame:CGRectMake(i*[DeviceManager currentScreenSize].width, 2, [DeviceManager currentScreenSize].width, 100)];
         // imgview.image = [UIImage imageNamed:Raimg[i]];
         [imgview setImageWithURL:[NSURL URLWithString:[@"http://123.57.206.120:8080/uniaccount/getImage?uri=" stringByAppendingPathComponent:PicArray[i]]]];
         NSLog(@"picpic::%@",[@"http://123.57.206.120:8080/uniaccount/getImage?uri=" stringByAppendingPathComponent:PicArray[i]]);
         //imgview.backgroundColor =[UIColor purpleColor];
         [Rascroll addSubview:imgview];
         
-        UILabel *lab =[[UILabel alloc] initWithFrame:CGRectMake(270+i*wid, 160, 100, 15)];
+        UILabel *lab =[[UILabel alloc] initWithFrame:CGRectMake(270+i*wid, 93, 100, 15)];
         lab.text = [NSString stringWithFormat:@"%ld / %ld",i+1,PicArray.count];
         lab.textColor = [UIColor colorWithWhite:50/255.0 alpha:0.9];
         [Rascroll addSubview:lab];
@@ -381,7 +371,7 @@
     
     
     
-    UIPageControl *pagecontrol = [[UIPageControl alloc] initWithFrame:CGRectMake(20, 170, 60, 10)];
+    UIPageControl *pagecontrol = [[UIPageControl alloc] initWithFrame:CGRectMake(20, 100, 60, 10)];
     pagecontrol.numberOfPages = PicArray.count;
     
     pagecontrol.pageIndicatorTintColor =[UIColor orangeColor];
@@ -641,11 +631,11 @@
 //        [self presentViewController:nav1 animated:YES completion:^{
 //    
 //        }];
+    
     ZhuboDetailController *dev =[[ZhuboDetailController alloc] init];
-    UINavigationController *nav =[[UINavigationController alloc] initWithRootViewController:dev];
-    [self presentViewController:nav animated:YES completion:^{
-        
-    }];
+    dev.hidesBottomBarWhenPushed = YES;
+//    UINavigationController *nav =[[UINavigationController alloc] initWithRootViewController:dev];
+    [self.navigationController pushViewController:dev animated:YES];
 
    // }
 //    if ([DeviceManager currentScreenSize].width==320&&[DeviceManager currentScreenSize].height==480) {

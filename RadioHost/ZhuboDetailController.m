@@ -23,18 +23,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.view.backgroundColor =[UIColor colorWithWhite:200/255.0 alpha:0.3];
+    self.view.backgroundColor =[UIColor colorWithWhite:240/255.0 alpha:1];
     
     [self createUI];
     
 //    self.view.backgroundColor =[UIColor colorWithWhite:255/255.0 alpha:1];
     [self addTiTle:@"小强来了"];
-    [self addimage:[UIImage imageNamed:@"222.png"] selector:@selector(backClick) location:YES];
+    //self.navigationController.navigationBar.
+  //  [self addimage:[UIImage imageNamed:@"222.png"] selector:@selector(backClick) location:YES];
 }
 -(void)backClick{
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-    }];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 

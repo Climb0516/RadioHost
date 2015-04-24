@@ -21,7 +21,7 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
-    [[UINavigationBar appearance ] setBarTintColor:[UIColor colorWithRed:180/255.0 green:10/255.0 blue:10/255.0 alpha:1]];
+    [[UINavigationBar appearance ] setBarTintColor:RGBCOLOR(190, 10, 10)];
     
     MyTabbarController *tab =[[MyTabbarController alloc] init];
     self.window.rootViewController = tab;
